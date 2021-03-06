@@ -9,7 +9,7 @@ import PIL.ImageOps
 
 X,y = fetch_openml('mnist_784', version = 1, return_X_y = True)
 
-xTrain, xTest, yTest, yTrain = train_test_split(X, y, random_state = 9, train_size = 7500, test_size = 2500 )
+xTrain, xTest, yTrain, yTest = train_test_split(X, y, random_state = 9, train_size = 7500, test_size = 2500 )
 
 xTrainScaled = xTrain / 255
 xTestScaled = xTest / 255
@@ -27,6 +27,6 @@ def getPrediction(image):
     imgBwResizedInvertedScaled = np.clip(imgBwResized - minPixel, 0, 255)
     maxPixel = np.max(imgBwResized)
     imgBwResizedInvertedScaled = np.asarray(imgBwResizedInvertedScaled) / maxPixel
-    testSample = np.array(imgBwResizedInvertedScaled).reshape(784, 1)
+    testSample = np.array(imgBwResizedInvertedScaled).reshape(1, 784)
     testPredict = cl.predict(testSample)
     return testPredict[0]

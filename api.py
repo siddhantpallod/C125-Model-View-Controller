@@ -3,7 +3,7 @@ from app import getPrediction
 
 app = Flask(__name__)
 
-@app.route('/predict-digit', method = ['POST'])
+@app.route('/predict-digit', methods = ['POST'])
 
 def predictData():
     image = request.files.get('digit')
